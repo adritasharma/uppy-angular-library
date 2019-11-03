@@ -1,11 +1,11 @@
 export interface UppyConfig {
     uploadAPI: {
         endpoint: string, // backend endpoint to upload files
-        headers?:object // additional headers eg:Authorization Token
+        headers?: object // additional headers eg:Authorization Token
     }
-    options?: {
-       // GoogleDrive?: boolean,
-        //Instagram?: boolean,
+    plugins?: {
+        GoogleDrive?: boolean,
+        Instagram?: boolean,
         Webcam?: boolean // Allow TAking Photo From Webcam
     },
     id?: string, //A site-wide unique ID for the instance.

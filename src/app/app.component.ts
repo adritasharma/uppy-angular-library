@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { UppyConfig } from 'uppy-angular/uppy-angular';
+import { UppyConfig } from 'projects/uppy-angular/src/public-api';
+//import { UppyConfig } from 'uppy-angular/uppy-angular';
 
 @Component({
   selector: 'app-root',
@@ -17,16 +18,17 @@ export class AppComponent {
         Authorization: 'Bearer ' + localStorage.getItem('userToken')
       }
     },
-
-    options: {
-      Webcam: true
+    plugins: {
+      Webcam: true,
+      GoogleDrive:true
     },
     restrictions: {
       // maxFileSize: 1000000,
       maxNumberOfFiles: 2,
       // minNumberOfFiles: 1,
       // allowedFileTypes: ['image/*','pdf/*', 'docs/*']
-    }
+    },
+    debug:true
   }
 
   onFileAdd(evt) {

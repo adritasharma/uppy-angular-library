@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { UppyAngularModule } from 'uppy-angular';
+import { UppyAngularModule } from 'projects/uppy-angular/src/public-api';
+//import { UppyAngularModule } from 'uppy-angular';
 
 @NgModule({
   declarations: [

@@ -39,7 +39,7 @@ Uppy's <a href="https://uppy.io/docs/"> Official Documentation
                 Authorization: 'Bearer ' + localStorage.getItem('userToken')
             }
         },
-        options: {
+        plugins: {
             Webcam: true
         }
     }
@@ -123,7 +123,7 @@ Add the dependencies in the scripts and styles attributes:
                 Authorization: 'Bearer ' + localStorage.getItem('userToken')
             }
         },
-        options: {
+        plugins: {
             Webcam: true
         }
     }

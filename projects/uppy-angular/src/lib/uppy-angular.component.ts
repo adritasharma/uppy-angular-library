@@ -1,9 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as Uppy from 'uppy';
-import * as Dashboard from '@uppy/dashboard';
-import * as GoogleDrive from '@uppy/google-drive';
-import * as Instagram from '@uppy/instagram';
-import * as Webcam from '@uppy/webcam';
 import * as Tus from '@uppy/tus';
 import { UppyConfig } from './uppy-config';
 
@@ -31,18 +27,17 @@ export class UppyAngularComponent implements OnInit {
         restrictions: this.config.restrictions
       })
     this.uppyInstance = uppy
-    uppy.use(Dashboard, { target: '.drag-drop-area', inline: true })
+    uppy.use(Uppy.Dashboard, { target: '.drag-drop-area', inline: true })
 
-    // if (this.settings.options.GoogleDrive) {
-    //   uppy.use(GoogleDrive, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
-    // }
-    // if (this.settings.options.Instagram) {
-    //   uppy.use(Instagram, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
-    // }
+    if (this.config.plugins.GoogleDrive) {
+      uppy.use(Uppy.GoogleDrive, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io',host: "companion-dev.quaqua.com" })
+    }
+    if (this.config.plugins.Instagram) {
+      uppy.use(Uppy.Instagram, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io' })
+    }
 
-
-    if (this.config.options.Webcam) {
-      uppy.use(Webcam, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
+    if (this.config.plugins.Webcam) {
+      uppy.use(Uppy.Webcam, { target: Uppy.Dashboard})
     }
 
 

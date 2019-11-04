@@ -12,9 +12,6 @@
     "uppy angular"
   ],
   "license": "MIT",
-  "dependencies": {
-    "uppy": "^1.5.2"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/adritasharma/uppy-angular-library"

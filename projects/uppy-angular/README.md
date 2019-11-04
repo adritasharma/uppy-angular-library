@@ -80,6 +80,8 @@ Add the dependencies in the scripts and styles attributes:
 
 ### Input
 
+
+
 <table>
 <tr>
 <td>Name</td>
@@ -94,6 +96,8 @@ Add the dependencies in the scripts and styles attributes:
 </table>
 
 ### Output
+
+
 
 <table>
 <tr>
@@ -110,20 +114,33 @@ Add the dependencies in the scripts and styles attributes:
 </tr>
 <tr>
 <td>(onFileAdd)</td>
-<td>Emits upload result irespective of backend success/failure</td>
+<td>Emits upload result irrespective of backend success/failure</td>
 </tr>
 </table>
 
 ### UppyConfig Description
 
-    settings: UppyConfig = {
+
+
+    export interface UppyConfig {
         uploadAPI: {
-            endpoint: `${environment.apiUrl}/files/Upload`,
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('userToken')
-            }
-        },
-        plugins: {
-            Webcam: true
+            endpoint: string, // backend endpoint to upload files
+            headers?: object // additional headers eg:Authorization Token
         }
+        plugins?: {
+            Webcam?: boolean // Allow Taking Photo From Webcam
+            GoogleDrive?: boolean,// Connect with GoogleDrive
+            Instagram?: boolean,// Connect with Instagram
+        },
+        id?: string, //A site-wide unique ID for the instance.
+        autoProceed?: boolean, //Setting this to true will start uploading automatically after the first file is selected without waiting for upload button trigger.
+        allowMultipleUploads?: boolean, //Setting this to true,  users can upload some files, and then add more files and upload those as well
+        debug?: boolean,
+        restrictions?: {
+            maxFileSize?: number, //null | number — maximum file size in bytes for each
+            maxNumberOfFiles?: number,//null | number — total number of files that can be selected
+            minNumberOfFiles?: number,//null | number — minimum number of files that must
+            allowedFileTypes?: Array<string> // null | array of wildcards image/*, exact mime types image/jpeg, or file extensions .jpg: ['image/*', '.jpg', '.jpeg', '.png', '.gif']
+        },
+        meta?: {} //Metadata object, used for passing things like public keys, usernames, tags and so on
     }

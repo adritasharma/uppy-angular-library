@@ -6,7 +6,7 @@ export interface UppyConfig {
     plugins?: {
         GoogleDrive?: boolean,
         Instagram?: boolean,
-        Webcam?: boolean // Allow TAking Photo From Webcam
+        Webcam?: boolean // Allow Taking Photo From Webcam
     },
     id?: string, //A site-wide unique ID for the instance.
     autoProceed?: boolean, //Setting this to true will start uploading automatically after the first file is selected without waiting for upload button trigger.

@@ -1,6 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import * as Uppy from 'uppy';
-import * as Tus from '@uppy/tus';
 import { UppyConfig } from './uppy-config';
 
 @Component({
@@ -18,30 +16,60 @@ export class UppyAngularComponent implements OnInit {
   @Output() onFileUpload = new EventEmitter();
   @Output() uploadResult = new EventEmitter();
 
+  @Output() onImageEditorStart = new EventEmitter();
+  @Output() onImageEditorComplete = new EventEmitter();
+
+
   uppyInstance: any
 
+
   ngOnInit() {
-    var uppy = Uppy.Core(
-      {
-        autoProceed: false,
-        restrictions: this.config.restrictions
-      })
+
+    const Uppy = require('@uppy/core');
+    const Tus = require('@uppy/tus');
+
+    var uppy = new Uppy({
+      autoProceed: false,
+      restrictions: this.config.restrictions
+    })
+
     this.uppyInstance = uppy
-    uppy.use(Uppy.Dashboard, { target: '.drag-drop-area', inline: true })
+
+    const Dashboard = require('@uppy/dashboard');
+
+    uppy.use(Dashboard, { target: '.drag-drop-area', inline: true })
+
+
+
+    // Plugins
 
     if (this.config.plugins.GoogleDrive) {
-      uppy.use(Uppy.GoogleDrive, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io',host: "companion-dev.quaqua.com" })
+      const GoogleDrive = require('@uppy/google-drive')
+      uppy.use(GoogleDrive, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
     }
     if (this.config.plugins.Instagram) {
-      uppy.use(Uppy.Instagram, { target: Uppy.Dashboard, companionUrl: 'https://companion.uppy.io' })
+      const Instagram = require('@uppy/instagram')
+      uppy.use(Instagram, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
+    }
+
+    if (this.config.plugins.Facebook) {
+      const Facebook = require('@uppy/facebook')
+      uppy.use(Facebook, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
+    }
+
+    if (this.config.plugins.Dropbox) {
+      const Dropbox = require('@uppy/dropbox')
+      uppy.use(Dropbox, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
     }
 
     if (this.config.plugins.Webcam) {
-      uppy.use(Uppy.Webcam, { target: Uppy.Dashboard})
+      const Webcam = require('@uppy/webcam')
+      uppy.use(Webcam, { target: Dashboard })
     }
 
 
-    uppy.use(Uppy.XHRUpload, {
+    const XHRUpload = require('@uppy/xhr-upload')
+    uppy.use(XHRUpload, {
       endpoint: this.config.uploadAPI.endpoint, headers: this.config.uploadAPI.headers
     })
 
@@ -65,6 +93,14 @@ export class UppyAngularComponent implements OnInit {
           that.uppyInstance().close()
         }, 1000);
       }
+    })
+
+    uppy.on('file-editor:start', (file) => {
+      this.onImageEditorStart.emit(file)
+    })
+
+    uppy.on('file-editor:complete', (updatedFile) => {
+      this.onImageEditorComplete.emit(updatedFile)
     })
   }
 

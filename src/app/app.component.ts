@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-//import { UppyConfig } from 'projects/uppy-angular/src/public-api';
-import { UppyConfig } from 'uppy-angular/uppy-angular';
+import { UppyConfig } from 'projects/uppy-angular/src/public-api';
+// import { UppyConfig } from 'uppy-angular/uppy-angular';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { UppyConfig } from 'uppy-angular/uppy-angular';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'UppyAngularDemo';
+  title = 'Uppy Angular Demo';
 
   settings: UppyConfig = {
     uploadAPI: {
@@ -20,7 +20,10 @@ export class AppComponent {
     },
     plugins: {
       Webcam: true,
-      GoogleDrive:true
+      GoogleDrive:true,
+      Instagram:true,
+      Facebook:true,
+      Dropbox:true
     },
     restrictions: {
       // maxFileSize: 1000000,
@@ -34,10 +37,20 @@ export class AppComponent {
   onFileAdd(evt) {
     console.log("onFileAdd", evt)
   }
+
   onFileUpload(evt) {
     console.log("onFileUpload", evt)
   }
+
   uploadResult(evt) {
     console.log("uploadResult", evt)
+  }
+
+  onImageEditorStart(evt) {
+    console.log("onImageEditorStart", evt)
+  }
+  
+  onImageEditorComplete(evt) {
+    console.log("onFilonImageEditorCompleteeUpload", evt)
   }
 }

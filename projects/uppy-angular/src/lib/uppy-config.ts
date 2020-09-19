@@ -7,7 +7,9 @@ export interface UppyConfig {
         GoogleDrive?: boolean,
         Instagram?: boolean,
         Webcam?: boolean // Allow Taking Photo From Webcam
-    },
+        Dropbox?: boolean
+        Facebook?: boolean
+    }
     id?: string, //A site-wide unique ID for the instance.
     autoProceed?: boolean, //Setting this to true will start uploading automatically after the first file is selected without waiting for upload button trigger.
     allowMultipleUploads?: boolean, //Setting this to true,  users can upload some files, and then add more files and upload those as well

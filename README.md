@@ -39,7 +39,7 @@ Uppy's <a href="https://uppy.io/docs/"  target="_blank"> Official Documentation
 
 ### Component TS
 
-    import { UppyConfig } from 'uppy-angular/uppy-angular';
+    import { UppyConfig } from 'uppy-angular';
 
     settings: UppyConfig = {
         uploadAPI: {

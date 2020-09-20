@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { UppyConfig } from 'uppy-angular';
 // import { UppyConfig } from 'projects/uppy-angular/src/public-api';
-import { UppyConfig } from 'uppy-angular/uppy-angular';
+
 
 @Component({
   selector: 'app-root',

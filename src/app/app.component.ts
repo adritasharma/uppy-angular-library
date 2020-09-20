@@ -46,11 +46,4 @@ export class AppComponent {
     console.log("uploadResult", evt)
   }
 
-  onImageEditorStart(evt) {
-    console.log("onImageEditorStart", evt)
-  }
-  
-  onImageEditorComplete(evt) {
-    console.log("onFilonImageEditorCompleteeUpload", evt)
-  }
 }

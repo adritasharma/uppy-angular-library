@@ -1,6 +1,6 @@
 # Uppy - Angular
 
-Angular component wrapper around Uppy's officially maintained file uploader. It can be used to easily implement uppy in Angular Projects
+Angular component wrapper around Uppy's officially maintained file uploader. It can be used to easily intigrate uppy in Angular Projects
 
 Uppy is being developed by the folks at <a href="https://transloadit.com/">Transloadit</a>
 
@@ -13,7 +13,7 @@ Uppy's <a href="https://uppy.io/docs/"> Official Documentation
 
 ## Installation
 
->npm i uppy@1.5.2
+>npm i uppy
 
 >npm i uppy-angular
 
@@ -39,17 +39,28 @@ Uppy's <a href="https://uppy.io/docs/"> Official Documentation
 
 ### Component TS
 
-    settings: UppyConfig = {
-        uploadAPI: {
-            endpoint: `${environment.apiUrl}/files/Upload`,
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('userToken')
-            }
-        },
-        options: {
-            Webcam: true
-        }
-    }
+  settings: UppyConfig = {
+    uploadAPI: {
+      endpoint: environment.apiUrl + 'files/Upload',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('userToken')
+      }
+    },
+    plugins: {
+      Webcam: true,
+      GoogleDrive:true,
+      Instagram:true,
+      Facebook:true,
+      Dropbox:true
+    },
+    restrictions: {
+      maxFileSize: 1000000,
+      maxNumberOfFiles: 2,
+      minNumberOfFiles: 1,
+      allowedFileTypes: ['image/*','pdf/*', 'docs/*']
+    },
+    debug:true
+  }
 
 ### Adding style
 
@@ -117,7 +128,7 @@ Add the dependencies in the scripts and styles attributes:
 </tr>
 <tr>
 <td>(onFileAdd)</td>
-<td>Emits upload result irespective of backend success/failure</td>
+<td>Emits upload result irrespective of backend success/failure</td>
 </tr>
 </table>
 

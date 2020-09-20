@@ -16,9 +16,6 @@ export class UppyAngularComponent implements OnInit {
   @Output() onFileUpload = new EventEmitter();
   @Output() uploadResult = new EventEmitter();
 
-  @Output() onImageEditorStart = new EventEmitter();
-  @Output() onImageEditorComplete = new EventEmitter();
-
 
   uppyInstance: any
 
@@ -42,8 +39,8 @@ export class UppyAngularComponent implements OnInit {
       inline: true,
       showProgressDetails: this.config.showProgressDetails,
       note: this.config.note,
-      height: this.config.note,
-      metaFields: this.config.metaFields,
+      height: this.config.height,
+      width: this.config.width,
       browserBackButtonClose: this.config.browserBackButtonClose
      });
 
@@ -103,13 +100,6 @@ export class UppyAngularComponent implements OnInit {
       }
     })
 
-    uppy.on('file-editor:start', (file) => {
-      this.onImageEditorStart.emit(file)
-    })
-
-    uppy.on('file-editor:complete', (updatedFile) => {
-      this.onImageEditorComplete.emit(updatedFile)
-    })
   }
 
 }

@@ -2,13 +2,13 @@
 
 Angular component wrapper around Uppy's officially maintained file uploader. It can be used to easily intigrate uppy in Angular Projects
 
-Uppy is being developed by the folks at <a href="https://transloadit.com/">Transloadit</a>
+Uppy is being developed by the folks at <a href="https://transloadit.com/"  target="_blank">Transloadit</a>
 
-Uppy's <a href="https://uppy.io/docs/"> Official Documentation
+Uppy's <a href="https://uppy.io/docs/"  target="_blank"> Official Documentation
 
 ## NPM Package Link
 
-<a href="https://www.npmjs.com/package/uppy-angular">uppy-angular</a>
+<a href="https://www.npmjs.com/package/uppy-angular"  target="_blank">uppy-angular</a>
 
 
 ## Installation
@@ -17,7 +17,7 @@ Uppy's <a href="https://uppy.io/docs/"> Official Documentation
 
 >npm i uppy-angular
 
-# <a href="https://stackblitz.com/edit/uppy-angular-stackbiltz-demo?embed=1&file=src/app/app.component.ts"> Demo </a>
+# <a href="https://stackblitz.com/edit/angular-l1dczb?file=src/app/app.component.html"> Demo </a>
 
 # Getting started
 
@@ -39,6 +39,8 @@ Uppy's <a href="https://uppy.io/docs/"> Official Documentation
 
 ### Component TS
 
+    import { UppyConfig } from 'uppy-angular/uppy-angular';
+
     settings: UppyConfig = {
         uploadAPI: {
         endpoint: environment.apiUrl + 'files/Upload',
@@ -47,19 +49,18 @@ Uppy's <a href="https://uppy.io/docs/"> Official Documentation
         }
         },
         plugins: {
-        Webcam: true,
-        GoogleDrive:true,
-        Instagram:true,
-        Facebook:true,
-        Dropbox:true
+            Webcam: true,
+            GoogleDrive: true,
+            Instagram: true,
+            Facebook: true,
+            Dropbox: true,
+            ScreenCapture:true
         },
         restrictions: {
-        maxFileSize: 1000000,
-        maxNumberOfFiles: 2,
-        minNumberOfFiles: 1,
-        allowedFileTypes: ['image/*','pdf/*', 'docs/*']
-        },
-        debug:true
+            maxFileSize: 1000000,
+            maxNumberOfFiles: 10,
+            minNumberOfFiles: 1
+        }
     }
 
 ### Adding style
@@ -68,9 +69,7 @@ Add the cdn stylesheet and js script in either index.html or download and keep t
 
 ### index.html
 
-    <link href="https://transloadit.edgly.net/releases/uppy/v1.5.2/uppy.min.css" rel="stylesheet">
-
-    <script src="https://transloadit.edgly.net/releases/uppy/v1.5.2/uppy.min.js"></script>
+      <link href="https://transloadit.edgly.net/releases/uppy/v1.21.1/uppy.min.css" rel="stylesheet">
 
 or
 

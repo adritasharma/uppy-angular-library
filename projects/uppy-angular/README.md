@@ -35,28 +35,28 @@ Uppy's <a href="https://uppy.io/docs/"> Official Documentation
 
 ### Component TS
 
-  settings: UppyConfig = {
-    uploadAPI: {
-      endpoint: environment.apiUrl + 'files/Upload',
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('userToken')
-      }
-    },
-    plugins: {
-      Webcam: true,
-      GoogleDrive:true,
-      Instagram:true,
-      Facebook:true,
-      Dropbox:true
-    },
-    restrictions: {
-      maxFileSize: 1000000,
-      maxNumberOfFiles: 2,
-      minNumberOfFiles: 1,
-      allowedFileTypes: ['image/*','pdf/*', 'docs/*']
-    },
-    debug:true
-  }
+    settings: UppyConfig = {
+        uploadAPI: {
+        endpoint: environment.apiUrl + 'files/Upload',
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('userToken')
+        }
+        },
+        plugins: {
+        Webcam: true,
+        GoogleDrive:true,
+        Instagram:true,
+        Facebook:true,
+        Dropbox:true
+        },
+        restrictions: {
+        maxFileSize: 1000000,
+        maxNumberOfFiles: 2,
+        minNumberOfFiles: 1,
+        allowedFileTypes: ['image/*','pdf/*', 'docs/*']
+        },
+        debug:true
+    }
 
 ### Adding style
 

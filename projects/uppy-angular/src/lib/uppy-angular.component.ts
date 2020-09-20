@@ -26,18 +26,26 @@ export class UppyAngularComponent implements OnInit {
   ngOnInit() {
 
     const Uppy = require('@uppy/core');
-    const Tus = require('@uppy/tus');
 
     var uppy = new Uppy({
-      autoProceed: false,
-      restrictions: this.config.restrictions
+      autoProceed: this.config.autoProceed,
+      restrictions: this.config.restrictions,
+      debug : this.config.debug
     })
 
     this.uppyInstance = uppy
 
     const Dashboard = require('@uppy/dashboard');
 
-    uppy.use(Dashboard, { target: '.drag-drop-area', inline: true })
+    uppy.use(Dashboard, { 
+      target: '.drag-drop-area', 
+      inline: true,
+      showProgressDetails: this.config.showProgressDetails,
+      note: this.config.note,
+      height: this.config.note,
+      metaFields: this.config.metaFields,
+      browserBackButtonClose: this.config.browserBackButtonClose
+     });
 
 
 

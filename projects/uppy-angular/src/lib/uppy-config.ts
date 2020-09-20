@@ -20,5 +20,10 @@ export interface UppyConfig {
         minNumberOfFiles?: number,//null | number — minimum number of files that must
         allowedFileTypes?: Array<string> // null | array of wildcards image/*, exact mime types image/jpeg, or file extensions .jpg: ['image/*', '.jpg', '.jpeg', '.png', '.gif']
     },
+    showProgressDetails?: boolean,
+    note?: string,
+    height?:number,
+    metaFields?:any[],
+    browserBackButtonClose?: true
     meta?: {} //Metadata object, used for passing things like public keys, usernames, tags and so on
 }

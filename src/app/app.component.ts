@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { UppyConfig } from 'projects/uppy-angular/src/public-api';
-// import { UppyConfig } from 'uppy-angular/uppy-angular';
+// import { UppyConfig } from 'projects/uppy-angular/src/public-api';
+import { UppyConfig } from 'uppy-angular/uppy-angular';
 
 @Component({
   selector: 'app-root',
@@ -23,15 +23,17 @@ export class AppComponent {
       GoogleDrive:true,
       Instagram:true,
       Facebook:true,
-      Dropbox:true
+      Dropbox:true,
+      ScreenCapture:true
     },
     restrictions: {
       // maxFileSize: 1000000,
-      maxNumberOfFiles: 2,
+      maxNumberOfFiles: 10,
       // minNumberOfFiles: 1,
       // allowedFileTypes: ['image/*','pdf/*', 'docs/*']
     },
-    debug:true
+    debug:true,
+    note:""
   }
 
   onFileAdd(evt) {

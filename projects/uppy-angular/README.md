@@ -1,12 +1,15 @@
 # Uppy - Angular
 
-Angular component wrapper around Uppy's officially maintained file uploader. It can be used to easily implement uppy in Angular Projects
+Angular component wrapper around Uppy's officially maintained file uploader. It can be used to easily intigrate uppy in Angular Projects
 
 Uppy is being developed by the folks at <a href="https://transloadit.com/">Transloadit</a>
 
 Uppy's <a href="https://uppy.io/docs/"> Official Documentation
 
+
 ## Installation
+
+>npm i uppy
 
 >npm i uppy-angular
 
@@ -32,17 +35,28 @@ Uppy's <a href="https://uppy.io/docs/"> Official Documentation
 
 ### Component TS
 
-    settings: UppyConfig = {
-        uploadAPI: {
-            endpoint: `${environment.apiUrl}/files/Upload`,
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('userToken')
-            }
-        },
-        plugins: {
-            Webcam: true
-        }
-    }
+  settings: UppyConfig = {
+    uploadAPI: {
+      endpoint: environment.apiUrl + 'files/Upload',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('userToken')
+      }
+    },
+    plugins: {
+      Webcam: true,
+      GoogleDrive:true,
+      Instagram:true,
+      Facebook:true,
+      Dropbox:true
+    },
+    restrictions: {
+      maxFileSize: 1000000,
+      maxNumberOfFiles: 2,
+      minNumberOfFiles: 1,
+      allowedFileTypes: ['image/*','pdf/*', 'docs/*']
+    },
+    debug:true
+  }
 
 ### Adding style
 
@@ -80,8 +94,6 @@ Add the dependencies in the scripts and styles attributes:
 
 ### Input
 
-
-
 <table>
 <tr>
 <td>Name</td>
@@ -96,8 +108,6 @@ Add the dependencies in the scripts and styles attributes:
 </table>
 
 ### Output
-
-
 
 <table>
 <tr>
@@ -120,27 +130,33 @@ Add the dependencies in the scripts and styles attributes:
 
 ### UppyConfig Description
 
-
-
-    export interface UppyConfig {
-        uploadAPI: {
-            endpoint: string, // backend endpoint to upload files
-            headers?: object // additional headers eg:Authorization Token
-        }
-        plugins?: {
-            Webcam?: boolean // Allow Taking Photo From Webcam
-            GoogleDrive?: boolean,// Connect with GoogleDrive
-            Instagram?: boolean,// Connect with Instagram
-        },
-        id?: string, //A site-wide unique ID for the instance.
-        autoProceed?: boolean, //Setting this to true will start uploading automatically after the first file is selected without waiting for upload button trigger.
-        allowMultipleUploads?: boolean, //Setting this to true,  users can upload some files, and then add more files and upload those as well
-        debug?: boolean,
-        restrictions?: {
-            maxFileSize?: number, //null | number — maximum file size in bytes for each
-            maxNumberOfFiles?: number,//null | number — total number of files that can be selected
-            minNumberOfFiles?: number,//null | number — minimum number of files that must
-            allowedFileTypes?: Array<string> // null | array of wildcards image/*, exact mime types image/jpeg, or file extensions .jpg: ['image/*', '.jpg', '.jpeg', '.png', '.gif']
-        },
-        meta?: {} //Metadata object, used for passing things like public keys, usernames, tags and so on
+interface UppyConfig {
+    uploadAPI: {
+        endpoint: string, // backend endpoint to upload files
+        headers?: object // additional headers eg:Authorization Token
     }
+    plugins?: {
+        GoogleDrive?: boolean // null | boolean - Allow Uploading Photo From GoogleDrive
+        Instagram?: boolean // null | boolean - Allow Uploading Photo From Instagram
+        Webcam?: boolean // null | boolean - Allow Taking Photo From Webcam
+        Dropbox?: boolean // null | boolean - Allow Uploading Photo From Dropbox
+        Facebook?: boolean // null | boolean - Allow Uploading Photo From Facebook
+        ScreenCapture?: boolean // null | boolean - Allow Taking ScreenCast
+    }
+    id?: string, //A site-wide unique ID for the instance.
+    autoProceed?: boolean, //Setting this to true will start uploading automatically after the first file is selected without waiting for upload button trigger.
+    allowMultipleUploads?: boolean, //Setting this to true,  users can upload some files, and then add more files and upload those as well
+    debug?: boolean,
+    restrictions?: {
+        maxFileSize?: number, //null | number — maximum file size in bytes for each
+        maxNumberOfFiles?: number,//null | number — total number of files that can be selected
+        minNumberOfFiles?: number,//null | number — minimum number of files that must
+        allowedFileTypes?: Array<string> // null | array of wildcards image/*, exact mime types image/jpeg, or file extensions .jpg: ['image/*', '.jpg', '.jpeg', '.png', '.gif']
+    },
+    showProgressDetails?: boolean, // By default, progress in Status Bar is shown as a simple percentage. If you would like to also display remaining upload size and time, set this to true.
+    note?: string, // Optionally, specify a string of text that explains something about the upload for the user. This is a place to explain any restrictions that are put in place. 
+    width?:number, //null | number — Width of the Dashboard in pixels.
+    height?:number, //null | number — Height of the Dashboard in pixels.
+    browserBackButtonClose?: true
+    meta?: {} //Metadata object, used for passing things like public keys, usernames, tags and so on
+}

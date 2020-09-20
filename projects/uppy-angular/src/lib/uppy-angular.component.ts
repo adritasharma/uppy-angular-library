@@ -72,6 +72,12 @@ export class UppyAngularComponent implements OnInit {
       uppy.use(Webcam, { target: Dashboard })
     }
 
+    if (this.config.plugins.ScreenCapture) {
+      const ScreenCapture = require('@uppy/screen-capture')
+      uppy.use(ScreenCapture, { target: Dashboard })
+    }
+
+
 
     const XHRUpload = require('@uppy/xhr-upload')
     uppy.use(XHRUpload, {

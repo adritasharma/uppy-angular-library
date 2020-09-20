@@ -9,7 +9,7 @@ export interface UppyConfig {
         Webcam?: boolean // null | boolean - Allow Taking Photo From Webcam
         Dropbox?: boolean // null | boolean - Allow Uploading Photo From Dropbox
         Facebook?: boolean // null | boolean - Allow Uploading Photo From Facebook
-        ScreenCapture?: boolean // null | boolean - Allow Taking ScreenCapture
+        ScreenCapture?: boolean // null | boolean - Allow Taking ScreenCast
     }
     id?: string, //A site-wide unique ID for the instance.
     autoProceed?: boolean, //Setting this to true will start uploading automatically after the first file is selected without waiting for upload button trigger.

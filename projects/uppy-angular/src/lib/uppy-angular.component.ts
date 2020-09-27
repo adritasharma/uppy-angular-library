@@ -36,12 +36,22 @@ export class UppyAngularComponent implements OnInit {
 
     uppy.use(Dashboard, { 
       target: '.drag-drop-area', 
-      inline: true,
-      showProgressDetails: this.config.showProgressDetails,
+      id:this.config.id,
+      theme: this.config.theme,
       note: this.config.note,
       height: this.config.height,
       width: this.config.width,
-      browserBackButtonClose: this.config.browserBackButtonClose
+      thumbnailWidth:this.config.thumbnailWidth,
+      inline: true,
+      showProgressDetails: this.config.showProgressDetails,
+      browserBackButtonClose: this.config.browserBackButtonClose,
+      hideUploadButton: this.config.hideUploadButton, 
+      hideRetryButton: this.config.hideRetryButton, 
+      hidePauseResumeButton: this.config.hidePauseResumeButton, 
+      hideCancelButton: this.config.hideCancelButton,
+      hideProgressAfterFinish: this.config.hideProgressAfterFinish,
+      proudlyDisplayPoweredByUppy: this.config.proudlyDisplayPoweredByUppy, 
+      allowMultipleUploads: this.config.allowMultipleUploads
      });
 
 

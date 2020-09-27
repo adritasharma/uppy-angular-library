@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { UppyConfig } from 'projects/uppy-angular/src/lib/uppy-config';
 import { environment } from 'src/environments/environment';
-import { UppyConfig } from 'uppy-angular';
-// import { UppyConfig } from 'projects/uppy-angular/src/public-api';
+// import { UppyConfig } from 'uppy-angular';
 
 
 @Component({
@@ -34,7 +34,13 @@ export class AppComponent {
       // allowedFileTypes: ['image/*','pdf/*', 'docs/*']
     },
     debug:true,
-    note:""
+    note:"",
+    theme:'auto',
+    showProgressDetails:false,
+    hideRetryButton:false,
+    hideCancelButton:false,
+    hideProgressAfterFinish:true,
+    proudlyDisplayPoweredByUppy:true
   }
 
   onFileAdd(evt) {

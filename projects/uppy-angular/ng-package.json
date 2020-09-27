@@ -3,5 +3,8 @@
   "dest": "../../dist/uppy-angular",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "uppy"
+  ]
 }

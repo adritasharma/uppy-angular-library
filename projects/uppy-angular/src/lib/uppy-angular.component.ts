@@ -25,9 +25,9 @@ export class UppyAngularComponent implements OnInit {
     const Uppy = require('@uppy/core');
 
     var uppy = new Uppy({
-      autoProceed: this.config.autoProceed,
+      autoProceed: this.config.options.autoProceed,
       restrictions: this.config.restrictions,
-      debug : this.config.debug
+      debug: this.config.options.debug,
     })
 
     this.uppyInstance = uppy
@@ -36,22 +36,23 @@ export class UppyAngularComponent implements OnInit {
 
     uppy.use(Dashboard, { 
       target: '.drag-drop-area', 
-      id:this.config.id,
-      theme: this.config.theme,
-      note: this.config.note,
-      height: this.config.height,
-      width: this.config.width,
-      thumbnailWidth:this.config.thumbnailWidth,
+      id: this.config.options.id,
+      theme: this.config.uploaderLook.theme,
+      note: this.config.uploaderLook.note,
+      height: this.config.uploaderLook.height,
+      width: this.config.uploaderLook.width,
+      thumbnailWidth: this.config.uploaderLook.thumbnailWidth,
       inline: true,
-      showProgressDetails: this.config.showProgressDetails,
-      browserBackButtonClose: this.config.browserBackButtonClose,
-      hideUploadButton: this.config.hideUploadButton, 
-      hideRetryButton: this.config.hideRetryButton, 
-      hidePauseResumeButton: this.config.hidePauseResumeButton, 
-      hideCancelButton: this.config.hideCancelButton,
-      hideProgressAfterFinish: this.config.hideProgressAfterFinish,
-      proudlyDisplayPoweredByUppy: this.config.proudlyDisplayPoweredByUppy, 
-      allowMultipleUploads: this.config.allowMultipleUploads
+      showProgressDetails: this.config.statusBarOptions.showProgressDetails,
+      browserBackButtonClose: this.config.options.browserBackButtonClose,
+      hideUploadButton: this.config.statusBarOptions.hideUploadButton,
+      hideRetryButton: this.config.statusBarOptions.hideRetryButton,
+      hidePauseResumeButton: this.config.statusBarOptions.hidePauseResumeButton,
+      hideCancelButton: this.config.statusBarOptions.hideCancelButton,
+      hideAfterFinish: this.config.statusBarOptions.hideAfterFinish,
+      hideProgressAfterFinish: this.config.statusBarOptions.hideProgressAfterFinish,
+      proudlyDisplayPoweredByUppy: this.config.uploaderLook.proudlyDisplayPoweredByUppy,
+      allowMultipleUploads: this.config.options.allowMultipleUploads
      });
 
 
@@ -95,8 +96,8 @@ export class UppyAngularComponent implements OnInit {
     })
 
     uppy.on('file-added', (file) => {
-      if (this.config.meta) {
-        uppy.setFileMeta(file.id, this.config.meta)
+      if (this.config.options.meta) {
+        uppy.setFileMeta(file.id, this.config.options.meta)
       }
       this.onFileAdd.emit(file)
     });
@@ -107,13 +108,6 @@ export class UppyAngularComponent implements OnInit {
 
     uppy.on('complete', (result) => {
       this.uploadResult.emit(result)
-
-      if (result.successful.length > 0) {
-        var that = this
-        setTimeout(function () {
-          that.uppyInstance().close()
-        }, 1000);
-      }
     })
 
   }

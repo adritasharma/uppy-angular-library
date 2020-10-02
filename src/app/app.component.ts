@@ -14,33 +14,36 @@ export class AppComponent {
 
   settings: UppyConfig = {
     uploadAPI: {
-      endpoint: environment.apiUrl + 'files/Upload',
+      endpoint: "https://localhost:44315/api/Upload",
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('userToken')
       }
     },
     plugins: {
       Webcam: true,
-      GoogleDrive:true,
-      Instagram:true,
-      Facebook:true,
-      Dropbox:true,
-      ScreenCapture:true
+      GoogleDrive: true,
+      Instagram: true,
+      Facebook: true,
+      Dropbox: true,
+      ScreenCapture: true
     },
     restrictions: {
-      // maxFileSize: 1000000,
       maxNumberOfFiles: 10,
-      // minNumberOfFiles: 1,
-      // allowedFileTypes: ['image/*','pdf/*', 'docs/*']
     },
-    debug:true,
-    note:"",
-    theme:'auto',
-    showProgressDetails:false,
-    hideRetryButton:false,
-    hideCancelButton:false,
-    hideProgressAfterFinish:true,
-    proudlyDisplayPoweredByUppy:true
+    options: {
+      debug: true,
+    },
+    uploaderLook: {
+      note: "",
+      theme: 'auto',
+      proudlyDisplayPoweredByUppy: true
+    },
+    statusBarOptions: {
+      showProgressDetails: true,
+      hideRetryButton: false,
+      hideCancelButton: false,
+      hideProgressAfterFinish: false
+    }
   }
 
   onFileAdd(evt) {

@@ -116,6 +116,7 @@ Add the cdn stylesheet in index.html or download
             headers?: object // additional headers eg:Authorization Token
         },
         plugins?: {
+            companionUrl?: string // null | string - URL to a Companion instance.
             GoogleDrive?: boolean // null | boolean - Allow Uploading Photo From GoogleDrive
             Instagram?: boolean // null | boolean - Allow Uploading Photo From Instagram
             Webcam?: boolean // null | boolean - Allow Taking Photo From Webcam

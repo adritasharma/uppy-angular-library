@@ -58,24 +58,24 @@ export class UppyAngularComponent implements OnInit {
 
 
     // Plugins
-
+    const companionUrl = this.config.plugins.companionUrl || 'https://companion.uppy.io';
     if (this.config.plugins.GoogleDrive) {
       const GoogleDrive = require('@uppy/google-drive')
-      uppy.use(GoogleDrive, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
+      uppy.use(GoogleDrive, { target: Dashboard, companionUrl: companionUrl })
     }
     if (this.config.plugins.Instagram) {
       const Instagram = require('@uppy/instagram')
-      uppy.use(Instagram, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
+      uppy.use(Instagram, { target: Dashboard, companionUrl: companionUrl })
     }
 
     if (this.config.plugins.Facebook) {
       const Facebook = require('@uppy/facebook')
-      uppy.use(Facebook, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
+      uppy.use(Facebook, { target: Dashboard, companionUrl: companionUrl })
     }
 
     if (this.config.plugins.Dropbox) {
       const Dropbox = require('@uppy/dropbox')
-      uppy.use(Dropbox, { target: Dashboard, companionUrl: 'https://companion.uppy.io' })
+      uppy.use(Dropbox, { target: Dashboard, companionUrl: companionUrl })
     }
 
     if (this.config.plugins.Webcam) {

@@ -24,13 +24,19 @@ export class UppyAngularComponent implements OnInit {
 
     const Uppy = require('@uppy/core');
 
-    var uppy = new Uppy({
+    const opts = {
       autoProceed: this.config.options.autoProceed,
       restrictions: this.config.restrictions,
       debug: this.config.options.debug,
-    })
+    };
 
-    this.uppyInstance = uppy
+    if (this.config.options.locale) {
+      Object.assign(opts, { locale: this.config.options.locale });
+    }
+
+    var uppy = new Uppy(opts);
+
+    this.uppyInstance = uppy;
 
     const Dashboard = require('@uppy/dashboard');
 

@@ -1,5 +1,6 @@
 export interface UppyConfig {
     uploadAPI: {
+        destination?: string, // xhr | tus
         endpoint: string, // backend endpoint to upload files
         headers?: object // additional headers eg:Authorization Token
     },
@@ -29,7 +30,7 @@ export interface UppyConfig {
     },
     uploaderLook: {
         theme?: string, // light | dark | auto
-        note?: string, // Optionally, specify a string of text that explains something about the upload for the user. This is a place to explain any restrictions that are put in place. 
+        note?: string, // Optionally, specify a string of text that explains something about the upload for the user. This is a place to explain any restrictions that are put in place.
         proudlyDisplayPoweredByUppy?: boolean, //Uppy is provided to the world for free by the team behind Transloadit. In return, we ask that you consider keeping a tiny Uppy logo at the bottom of the Dashboard, so that more people can discover and use Uppy. This is, of course, entirely optional. Just set this option to false if you do not wish to display the Uppy logo
         width?: number, //null | number — Width of the Dashboard in pixels.
         height?: number, //null | number — Height of the Dashboard in pixels.

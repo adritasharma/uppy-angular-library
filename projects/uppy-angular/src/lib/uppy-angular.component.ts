@@ -40,8 +40,8 @@ export class UppyAngularComponent implements OnInit {
 
     const Dashboard = require('@uppy/dashboard');
 
-    uppy.use(Dashboard, { 
-      target: '.drag-drop-area', 
+    uppy.use(Dashboard, {
+      target: '.drag-drop-area',
       id: this.config.options.id,
       theme: this.config.uploaderLook.theme,
       note: this.config.uploaderLook.note,
@@ -94,12 +94,17 @@ export class UppyAngularComponent implements OnInit {
       uppy.use(ScreenCapture, { target: Dashboard })
     }
 
-
-
-    const XHRUpload = require('@uppy/xhr-upload')
-    uppy.use(XHRUpload, {
-      endpoint: this.config.uploadAPI.endpoint, headers: this.config.uploadAPI.headers
-    })
+    if (this.config.uploadAPI.destination && this.config.uploadAPI.destination == 'tus') {
+      const Tus = require('@uppy/tus')
+      uppy.use(Tus, {
+        endpoint: this.config.uploadAPI.endpoint, headers: this.config.uploadAPI.headers
+      })
+    } else {
+      const XHRUpload = require('@uppy/xhr-upload')
+      uppy.use(XHRUpload, {
+        endpoint: this.config.uploadAPI.endpoint, headers: this.config.uploadAPI.headers
+      })
+    }
 
     uppy.on('file-added', (file) => {
       if (this.config.options.meta) {

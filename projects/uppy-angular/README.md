@@ -149,5 +149,6 @@ Add the cdn stylesheet in index.html or download
             autoProceed?: boolean, //Setting this to true will start uploading automatically after the first file is selected without waiting for upload button trigger.
             allowMultipleUploads?: boolean, //Setting this to true,  users can upload some files, and then add more files and upload those as well
             meta?: {} //Metadata object, used for passing things like public keys, usernames, tags and so on
+            locale?: {} // Locale pack
         }
     }

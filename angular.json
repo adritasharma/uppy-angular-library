@@ -25,8 +25,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -62,14 +61,17 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "UppyAngularDemo:build:production"
+              "browserTarget": "test:build:production"
+            },
+            "development": {
+              "browserTarget": "test:build:development"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "UppyAngularDemo:build"
+            "browserTarget": "test:build"
           }
         },
         "test": {
@@ -138,11 +140,20 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/uppy-angular/tsconfig.lib.json",
             "project": "projects/uppy-angular/ng-package.json"
-          }
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/uppy-angular/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/uppy-angular/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",

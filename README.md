@@ -112,6 +112,7 @@ Add the cdn stylesheet in index.html or download
 
     export interface UppyConfig {
         uploadAPI: {
+            destination: string, // backend destination (xhr | tus)
             endpoint: string, // backend endpoint to upload files
             headers?: object // additional headers eg:Authorization Token
         },

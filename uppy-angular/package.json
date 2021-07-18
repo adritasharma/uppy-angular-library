@@ -1,0 +1,37 @@
+{
+  "name": "uppy-angular",
+  "version": "0.1.6",
+  "description": "Angular Wrapper of Upply Uploader",
+  "peerDependencies": {
+    "@angular/common": "~12.1.2",
+    "@angular/core": "~12.1.2"
+  },
+  "dependencies": {
+    "uppy": "~1.21.1",
+    "tslib": "^2.2.0"
+  },
+  "private": false,
+  "keywords": [
+    "uppy",
+    "file-upload",
+    "uppy angular",
+    "angular file upload"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adritasharma/uppy-angular-library"
+  },
+  "author": {
+    "name": "Adrita Sharma",
+    "email": "adritasharma.developer@gmail.com",
+    "url": "https://www.linkedin.com/in/adritasharma/"
+  },
+  "main": "bundles/uppy-angular.umd.js",
+  "module": "fesm2015/uppy-angular.js",
+  "es2015": "fesm2015/uppy-angular.js",
+  "esm2015": "esm2015/uppy-angular.js",
+  "fesm2015": "fesm2015/uppy-angular.js",
+  "typings": "uppy-angular.d.ts",
+  "sideEffects": false
+}

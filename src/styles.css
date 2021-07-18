@@ -1,0 +1,39 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+.nav-link{
+    background: #fff !important;
+    color: #f37 !important;
+}
+.card-header,.nav-link.active {
+    color: #fff !important;
+    background: #f37 !important;
+    font-size: larger;
+}
+.nav-tabs {
+    border-bottom: 1px solid #e8c4d0;
+}
+
+h5,h6 {
+    color: #f37;
+}
+
+h6{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.container{
+    margin-top: 3rem;
+    max-width: 1400px;
+}
+
+.form-check-label {
+    margin-right: 1rem;
+}
+
+.uppy-option-label {
+    margin-right: 1rem;
+}
+pre{
+    padding: 2rem 5rem;
+    background: #fbfbf3;
+}

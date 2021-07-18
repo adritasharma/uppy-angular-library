@@ -1,4 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: "https://localhost:44315/api/"
+  destination: 'tus',
+  tusApiUrl: "https://master.tus.io/files/",
+  apiUrl: "https://localhost:44315/api/Upload",
 };

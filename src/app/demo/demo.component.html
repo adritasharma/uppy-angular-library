@@ -1,0 +1,234 @@
+<div class="container">
+
+
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1">
+          <a ngbNavLink>Demo</a>
+          <ng-template ngbNavContent>
+              <div class="row">
+                  <div class="col-6 ">
+                      <ng-uppy [config]="settings" (onFileAdd)="onFileAdd($event)"
+                          (onFileUpload)="onFileUpload($event)" (uploadResult)="uploadResult($event)" *ngIf="show">
+                      </ng-uppy>
+                  </div>
+                  <div class="col-6 card">
+                      <h5>Plugins</h5>
+                      <div class="row">
+                          <div class="col-6" *ngFor="let plugin of pluginList;let i = index">
+                              <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" [(ngModel)]="settings.plugins[plugin]"
+                                      name="plugin-{{i}}" [checked]="settings.plugins[plugin]"  
+                                      (ngModelChange)="onPluginClick(plugin, $event)"> 
+                                       <!-- (ngModelChange)="onPluginClick(plugin, $event)" -->
+                                  <label class="form-check-label">
+                                      {{plugin | HumanCase }}
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                      <hr>
+                      <h5>Restrictions</h5>
+                      <div class="row">
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Max Number Of Files:</label>
+                                  <input type="number" class="form-control"
+                                      [(ngModel)]="settings.restrictions.maxNumberOfFiles"
+                                      (ngModelChange)="resetChildForm()">
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Min Number Of Files:</label>
+                                  <input type="number" class="form-control"
+                                      [(ngModel)]="settings.restrictions.minNumberOfFiles"
+                                      (ngModelChange)="resetChildForm()">
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Allowed File Types:</label>
+                                  <ng-select [items]="FileTypeList" [multiple]="true" [closeOnSelect]="false"
+                                      [searchable]="false" placeholder="Select File Types"
+                                      [(ngModel)]="settings.restrictions.allowedFileTypes"
+                                      (ngModelChange)="resetChildForm()">
+                                  </ng-select>
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Max File Size (in bytes):</label>
+                                  <input type="number" class="form-control"
+                                      [(ngModel)]="settings.restrictions.maxFileSize"
+                                      (ngModelChange)="resetChildForm()">
+                              </div>
+                          </div>
+                      </div>
+                      <h5>Look and Feel</h5>
+                      <div class="row">
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Height (in pixels):</label>
+                                  <input type="number" class="form-control" [(ngModel)]="settings.uploaderLook.height"
+                                      (ngModelChange)="resetChildForm()">
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Width (in pixels):</label>
+                                  <input type="number" class="form-control" [(ngModel)]="settings.uploaderLook.width"
+                                      (ngModelChange)="resetChildForm()">
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Thumbnail Width (in pixels):</label>
+                                  <input type="number" class="form-control"
+                                      [(ngModel)]="settings.uploaderLook.thumbnailWidth"
+                                      (ngModelChange)="resetChildForm()">
+                              </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                                <label>Select Language:</label>
+                                <ng-select [items]="languageList" [multiple]="false" [closeOnSelect]="false"
+                                    [searchable]="false" placeholder="Select Language"
+                                    [(ngModel)]="settings.options.locale"
+                                    bindLabel="display" 
+                                    bindValue="value" 
+                                    (ngModelChange)="resetChildForm()">
+                                </ng-select>
+                            </div>
+                        </div>
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="checkbox"
+                                          [(ngModel)]="settings.uploaderLook.proudlyDisplayPoweredByUppy"
+                                          (ngModelChange)="resetChildForm()">
+                                      <label class="form-check-label">
+                                          Show PoweredByUppy Button
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Theme:</label>
+                                  <div>
+                                      <label class="form-check-label">
+                                          <input type="radio" name="theme" value="auto"
+                                              (ngModelChange)="resetChildForm()"
+                                              [(ngModel)]="settings.uploaderLook.theme" checked>
+                                          Auto
+                                      </label>
+                                      <label class="form-check-label">
+                                          <input type="radio" name="theme" value="dark"
+                                              (ngModelChange)="resetChildForm()"
+                                              [(ngModel)]="settings.uploaderLook.theme">
+                                          Dark
+                                      </label>
+                                      <label class="form-check-label">
+                                          <input type="radio" name="theme" value="light"
+                                              (ngModelChange)="resetChildForm()"
+                                              [(ngModel)]="settings.uploaderLook.theme">
+                                          Light
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <div class="col-6">
+                              <div class="form-group">
+                                  <label>Note:</label>
+                                  <textarea class="form-control" [(ngModel)]="settings.uploaderLook.note"
+                                      (ngModelChange)="resetChildForm()"></textarea>
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <h5>Status Bar</h5>
+
+                      <div class="row">
+                          <div class="col-6" *ngFor="let option of statusBarOptionList;let i = index">
+                              <div class="form-check">
+                                  <input class="form-check-input" type="checkbox"
+                                      [(ngModel)]="settings.statusBarOptions[option]" name="option-{{i}}"
+                                      (ngModelChange)="resetChildForm()">
+                                  <label class="form-check-label">
+                                      {{option | HumanCase }}
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+
+                      <h5>Options</h5>
+
+                      <div class="row">
+                          <div class="col-6" *ngFor="let option of optionList;let i = index">
+                              <div class="form-check">
+                                  <input class="form-check-input" type="checkbox"
+                                      [(ngModel)]="settings.options[option]" name="option-{{i}}"
+                                      (ngModelChange)="resetChildForm()">
+                                  <label class="form-check-label">
+                                      {{option | HumanCase }}
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+
+                      <h6> Settings JSON Configuration </h6>
+                      <pre>{{settings | json}} </pre>
+                  </div>
+              </div>
+          </ng-template>
+      </li>
+      <li [ngbNavItem]="2">
+          <a ngbNavLink>Installation</a>
+          <ng-template ngbNavContent>
+              <pre> <code [innerHtml]="installationString"></code></pre>
+
+          </ng-template>
+      </li>
+      <!-- <li [ngbNavItem]="3">
+          <a ngbNavLink>Configuration Used</a>
+          <ng-template ngbNavContent>
+              <pre>{{settings | json}} </pre>
+          </ng-template>
+      </li> -->
+      <li [ngbNavItem]="4">
+          <a ngbNavLink>HTML</a>
+          <ng-template ngbNavContent>
+              <pre>{{templateString}}</pre>
+          </ng-template>
+      </li>
+      <li [ngbNavItem]="5">
+          <a ngbNavLink>TypeScript</a>
+          <ng-template ngbNavContent>
+              <pre>{{tsString}}</pre>
+              <pre> settings = {{settings | json}} </pre>
+          </ng-template>
+      </li>
+      <li [ngbNavItem]="6">
+          <a ngbNavLink>Config Description</a>
+          <ng-template ngbNavContent>
+              <pre> {{configString}} </pre>
+          </ng-template>
+      </li>
+      <li [ngbNavItem]="7">
+          <a ngbNavLink>npm</a>
+          <ng-template ngbNavContent>
+              Go to <a href="https://www.npmjs.com/package/uppy-angular" target="_blank">uppy-angular</a> package
+          </ng-template>
+      </li>
+
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+
+
+
+</div>

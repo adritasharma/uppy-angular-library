@@ -19,12 +19,16 @@
     "@angular/platform-browser": "~12.1.2",
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
+    "@ng-bootstrap/ng-bootstrap": "^7.0.0",
+    "@ng-select/ng-select": "^5.0.3",
+    "@uppy/locales": "^1.21.0",
+    "bootstrap": "^4.5.0",
     "core-js": "^2.5.4",
     "redux": "^4.0.1",
-    "uppy": "^1.21.1",
-    "uppy-angular": "~0.1.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
+    "uppy": "^1.21.1",
+    "uppy-angular": "~0.1.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

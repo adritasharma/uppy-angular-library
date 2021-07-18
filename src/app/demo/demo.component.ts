@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UppyConfig } from 'projects/uppy-angular/src/lib/uppy-config';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
@@ -11,14 +12,20 @@ export class DemoComponent implements OnInit {
 
   constructor() { }
 
+  German = require('@uppy/locales/lib/de_DE')
+  Russian = require('@uppy/locales/lib/ru_RU')
+  Chinese = require('@uppy/locales/lib/zh_CN')
+  Arabic = require('@uppy/locales/lib/ar_SA')
+
   ngOnInit() {
+
   }
   show: boolean = true
   active = 1
   settings: UppyConfig = {
     uploadAPI: {
       endpoint: environment.tusApiUrl,
-      destination:environment.destination,
+      destination: environment.destination,
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('userToken')
       }
@@ -44,8 +51,9 @@ export class DemoComponent implements OnInit {
     statusBarOptions: {
       hideProgressAfterFinish: false
     },
-    options : {
-      autoProceed:false
+    options: {
+      autoProceed: false,
+      locale: null
     }
   }
 
@@ -132,7 +140,13 @@ export class DemoComponent implements OnInit {
 }`
 
 
-
+  languageList = [
+    { display :'Default',value:null},
+    { display :'German', value:this.German},
+    { display :'Russian', value:this.Russian},
+    { display :'Chinese', value:this.Chinese},
+    { display :'Arabic',value:this.Arabic}
+  ]
   statusBarOptionList = [
     "hideAfterFinish",
     "showProgressDetails",

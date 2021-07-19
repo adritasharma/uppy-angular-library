@@ -1,7 +1,0 @@
-/*
- * Public API Surface of uppy-angular
- */
-export * from './lib/uppy-angular.component';
-export * from './lib/uppy-angular.module';
-export * from './lib/uppy-config';
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL3VwcHktYW5ndWxhci9zcmMvcHVibGljLWFwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsOEJBQThCLENBQUM7QUFDN0MsY0FBYywyQkFBMkIsQ0FBQztBQUMxQyxjQUFjLG1CQUFtQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiLypcclxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIHVwcHktYW5ndWxhclxyXG4gKi9cclxuXHJcbmV4cG9ydCAqIGZyb20gJy4vbGliL3VwcHktYW5ndWxhci5jb21wb25lbnQnO1xyXG5leHBvcnQgKiBmcm9tICcuL2xpYi91cHB5LWFuZ3VsYXIubW9kdWxlJztcclxuZXhwb3J0ICogZnJvbSAnLi9saWIvdXBweS1jb25maWcnOyJdfQ==

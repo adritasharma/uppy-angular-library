@@ -97,7 +97,7 @@ export class UppyAngularComponent implements OnInit {
     if (this.config.uploadAPI.destination && this.config.uploadAPI.destination == 'tus') {
       const Tus = require('@uppy/tus')
       uppy.use(Tus, {
-        endpoint: this.config.uploadAPI.endpoint, headers: this.config.uploadAPI.headers
+        endpoint: this.config.uploadAPI.endpoint, headers: this.config.uploadAPI.headers, chunkSize: this.config.uploadAPI.chunkSize
       })
     } else {
       const XHRUpload = require('@uppy/xhr-upload')

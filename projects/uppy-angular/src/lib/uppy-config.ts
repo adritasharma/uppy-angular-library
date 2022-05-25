@@ -3,6 +3,7 @@ export interface UppyConfig {
         destination?: string, // xhr | tus
         endpoint: string, // backend endpoint to upload files
         headers?: object // additional headers eg:Authorization Token
+        chunkSize?: number // size of chunks in bytes
     },
     plugins?: {
         companionUrl?: string // null | string - URL to a Companion instance.
